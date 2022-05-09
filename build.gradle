@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '2.6.7'
+}
+
+sourceCompatibility = 17
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'org.liquibase:liquibase-core:4.9.1'
+    implementation "ch.qos.logback.contrib:logback-jackson:0.1.5"
+    implementation "ch.qos.logback.contrib:logback-json-classic:0.1.5"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation "org.projectlombok:lombok:1.18.24"
+    annotationProcessor "org.projectlombok:lombok:1.18.24"
+    implementation "org.mapstruct:mapstruct:1.4.2.Final"
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+    testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.2"
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+bootJar {
+    mainClass = 'com.superdevs.hospital.HospitalApplication'
+}
+
+jar {
+    enabled = true
+}
