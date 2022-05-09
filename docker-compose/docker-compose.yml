@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:8.0.29
+    container_name: mysql
+    restart: always
+    env_file:
+      - database.env
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    networks:
+      - hospital
+
+volumes:
+  mysql-data:
+    driver: local
+
+networks:
+  hospital:
+    driver: bridge
