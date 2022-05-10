@@ -1,6 +1,8 @@
 package com.superdevs.hospital.controller.handler;
 
+import com.superdevs.hospital.exception.InvalidDateRangeException;
 import com.superdevs.hospital.exception.InvalidUUIDException;
+import com.superdevs.hospital.exception.PatientNotFoundException;
 import com.superdevs.hospital.exception.StaffMemberNotFoundException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -80,6 +82,18 @@ public class HospitalControllerAdvice {
 
     @ExceptionHandler(StaffMemberNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleStaffMemberNotFoundException(StaffMemberNotFoundException ex) {
+        log.error(ex.getMessage(), ex);
+        return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InvalidDateRangeException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidDateRangeException(InvalidDateRangeException ex) {
+        log.error(ex.getMessage(), ex);
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handlePatientNotFoundException(PatientNotFoundException ex) {
         log.error(ex.getMessage(), ex);
         return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
     }

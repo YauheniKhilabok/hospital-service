@@ -1,6 +1,6 @@
 package com.superdevs.hospital.service.validator;
 
-public interface Validator<T> {
+public interface Validator {
 
-    void validate(T validatedObject);
+    void validate(Object... validatedObjects);
 }
