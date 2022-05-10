@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StaffMemberDto {
+public class PatientDto {
 
     private Long id;
     private String name;
-    private String uuid;
-    private LocalDateTime registrationDate;
+    private int age;
+    private LocalDateTime lastVisitDate;
 }

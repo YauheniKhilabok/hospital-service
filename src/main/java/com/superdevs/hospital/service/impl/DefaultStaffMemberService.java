@@ -10,6 +10,7 @@ import com.superdevs.hospital.service.StaffMemberService;
 import com.superdevs.hospital.service.validator.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,8 @@ public class DefaultStaffMemberService implements StaffMemberService {
 
     private final StaffMemberRepository staffMemberRepository;
     private final StaffMemberMapper staffMemberMapper;
-    private final Validator<String> uuidValidator;
+    @Qualifier("uuidValidator")
+    private final Validator uuidValidator;
 
     @Transactional
     @Override

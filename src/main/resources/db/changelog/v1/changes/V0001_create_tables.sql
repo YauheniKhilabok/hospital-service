@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS staff_members
 
 CREATE INDEX staff_members_uuid_idx ON staff_members (uuid);
 
-
 CREATE TABLE IF NOT EXISTS patients
 (
     id                BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -19,5 +18,5 @@ CREATE TABLE IF NOT EXISTS patients
     FOREIGN KEY (staff_member_id) REFERENCES staff_members (id)
 );
 
-CREATE INDEX patients_age_idx ON patients (age);
+CREATE INDEX patients_last_visit_date_idx ON patients (last_visit_date);
 CREATE INDEX patients_staff_member_id_idx ON patients (staff_member_id);
