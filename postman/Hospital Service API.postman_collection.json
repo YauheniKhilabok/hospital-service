@@ -1,0 +1,459 @@
+{
+	"info": {
+		"_postman_id": "5051f011-fe31-455a-8c77-dbfe02ccccf4",
+		"name": "Hospital Service API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a new staff member",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"New test name\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Name cannot be empty",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Name cannot be null",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": null\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Method not allowed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Content type not supported",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/javascript",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update staff member",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Updated Name\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/096e3e55-ab5a-4043-8933-83f13e73abed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"096e3e55-ab5a-4043-8933-83f13e73abed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid UUID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"name\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/invaliduuid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"invaliduuid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Staff member is not found by uuid",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"name\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/096e3e55-ab5a-4043-8933-83f13e73abad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"096e3e55-ab5a-4043-8933-83f13e73abad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all staff member patients",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid UUID when fetch all staff member patients",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/096e3e55/patients",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"096e3e55",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empty response when there is no such staff member uuid",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Download patient data",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid UUID when download",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/4043-8933-83f13e73abed/patients/309",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"4043-8933-83f13e73abed",
+						"patients",
+						"309"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient is not found when download",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete patients in date range",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/096e3e55-ab5a-4043-8933-83f13e73abed/patients?fromDate=2020-10-31T01:30:00.000-05:00&toDate=2022-01-01T01:30:00.000-05:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"096e3e55-ab5a-4043-8933-83f13e73abed",
+						"patients"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "2020-10-31T01:30:00.000-05:00"
+						},
+						{
+							"key": "toDate",
+							"value": "2022-01-01T01:30:00.000-05:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid UUID when delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/4043-8933-83f13e73abed/patients?fromDate=2020-10-31T01:30:00.000-05:00&toDate=2022-10-31T01:30:00.000-05:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"4043-8933-83f13e73abed",
+						"patients"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "2020-10-31T01:30:00.000-05:00"
+						},
+						{
+							"key": "toDate",
+							"value": "2022-10-31T01:30:00.000-05:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "From date cannot be after to date",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/096e3e55-ab5a-4043-8933-83f13e73abed/patients?fromDate=2020-10-31T01:30:00.000-05:00&toDate=2019-10-31T01:30:00.000-05:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"096e3e55-ab5a-4043-8933-83f13e73abed",
+						"patients"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "2020-10-31T01:30:00.000-05:00"
+						},
+						{
+							"key": "toDate",
+							"value": "2019-10-31T01:30:00.000-05:00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server error",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/api/v1/staff-members/096e3e55-ab5a-4043-8933-83f13e73abed/patients?fromDate=123&toDate=123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v1",
+						"staff-members",
+						"096e3e55-ab5a-4043-8933-83f13e73abed",
+						"patients"
+					],
+					"query": [
+						{
+							"key": "fromDate",
+							"value": "123"
+						},
+						{
+							"key": "toDate",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
